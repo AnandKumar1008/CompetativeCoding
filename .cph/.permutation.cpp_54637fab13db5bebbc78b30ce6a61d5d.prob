@@ -1,0 +1,1 @@
+{"name":"Local: permutation","url":"c:\\Users\\anand\\OneDrive\\Desktop\\Cp\\permutation.cpp","tests":[{"id":1692699791832,"input":"","output":""},{"id":1692774272049,"input":"1\n3 3\nabc\ndef\nghi\nabc","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\anand\\OneDrive\\Desktop\\Cp\\permutation.cpp","group":"local","local":true}

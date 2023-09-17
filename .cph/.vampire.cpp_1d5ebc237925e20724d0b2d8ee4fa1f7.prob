@@ -1,0 +1,1 @@
+{"name":"Local: vampire","url":"c:\\Users\\anand\\Desktop\\Cp\\vampire.cpp","tests":[{"id":1688656529785,"input":"3\n3\n1 2 3\n5\n2 3 1 5 2\n4\n5 7 12 6\n","output":"1\n2\n1\n"},{"id":1688657118611,"input":"1\n5\n0 2 0 0 0","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\anand\\Desktop\\Cp\\vampire.cpp","group":"local","local":true}
