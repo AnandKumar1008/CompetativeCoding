@@ -3,39 +3,42 @@ using namespace std;
 #define ll long long
 void solver()
 {
-    int n, k;
+    ll n, k;
     cin >> n >> k;
-    int a[n];
-    int b[k];
-    for (int &i : a)
+    ll a[n];
+    ll b[k];
+    for (ll &i : a)
         cin >> i;
-    for (int &i : b)
+    for (ll &i : b)
         cin >> i;
     sort(b, b + k);
     sort(a, a + n, greater<>());
     ll ans = 0;
+    vector<vector<ll>> res(k);
+    ll j = n - 1;
     for (int i = 0; i < k; i++)
     {
-        int x = b[i];
-        int prev;
-        if (i > 0)
-            prev = b[i - 1];
-        else
-            prev = 0;
-        int mx = 0, mn = INT_MAX;
-        for (int j = i; x > 0;)
+        res[i].push_back(a[i]);
+    }
+    // for (j = n - 1; j >= k;)
+    // {
+    for (int i = k - 1; i >= 0; i--)
+    {
+        for (int p = 0; p < b[i] - 1; p++)
         {
-            mx = max(a[j], mx);
-            mn = min(a[j], mn);
-            x--;
-            prev--;
-            if (prev > 0)
-                j += k;
-            else
-                j += k - i;
+
+            res[i].push_back(a[j--]);
         }
-        // cout << mx << "mx mn " << mn << endl;
-        ans += mx + mn;
+    }
+    // }
+    for (ll i = 0; i < k; i++)
+    {
+        if (res[i].size() == 1)
+        {
+            ans += 2 * res[i][0];
+        }
+        else
+            ans += res[i][0] + res[i][1];
     }
     cout << ans << endl;
 }
@@ -44,10 +47,27 @@ int main()
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
-    int t;
+    ll t;
     cin >> t;
     while (t--)
     {
         solver();
     }
 }
+
+// #include <algorithm>
+// long long t, n, k, a[200007], w[200007], i, p, s;
+// main()
+// {
+//     for (scanf("%lld", &t); t--; printf("%lld\n", s))
+//     {
+//         for (scanf("%lld%lld", &n, &k), i = p = s = 0; i < n;)
+//             scanf("%lld", a + i++);
+//         for (i = 0; i < k;)
+//             scanf("%lld", w + i++);
+//         for (std::sort(a, a + n), std::sort(w, w + k), i = 0; i < k && w[i] < 2; ++i)
+//             s += 2 * a[--n];
+//         for (; i < k; p += w[--k] - 1)
+//             s += a[p] + a[--n];
+//     }
+// }
