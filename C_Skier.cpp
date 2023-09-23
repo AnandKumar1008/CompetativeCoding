@@ -24,6 +24,7 @@ int main()
             if (v.count({p + a, q + b}) == 0)
                 c += 5, v.insert({p + a, q + b});
             else
+
                 c += 1;
         }
         cout << c << endl;
