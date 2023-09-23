@@ -1,20 +1,31 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define ll long long
-void solver()
-{
-    ll n;
-    cin >> n;
-}
 int main()
 {
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    cout.tie(0);
     int t;
     cin >> t;
     while (t--)
     {
-        solver();
+        string s;
+        cin >> s;
+        set<pair<int, int>> v;
+        int a = 0, b = 0, c = 0;
+        for (char x : s)
+        {
+            int p = a, q = b;
+            if (x == 'N')
+                a++;
+            else if (x == 'S')
+                a--;
+            else if (x == 'W')
+                b--;
+            else
+                b++;
+            if (v.count({p + a, q + b}) == 0)
+                c += 5, v.insert({p + a, q + b});
+            else
+                c += 1;
+        }
+        cout << c << endl;
     }
 }
