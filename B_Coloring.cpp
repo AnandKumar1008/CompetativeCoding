@@ -1,20 +1,24 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define ll long long
-void solver()
-{
-    ll n;
-    cin >> n;
-}
+
 int main()
 {
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    cout.tie(0);
     int t;
-    cin >> t;
+    scanf("%d", &t);
     while (t--)
     {
-        solver();
+        int n, m, k;
+        scanf("%d %d %d", &n, &m, &k);
+        int fl = 0;
+        for (int i = 1; i <= m; ++i)
+        {
+            int a;
+            scanf("%d", &a);
+            if (a == (n + k - 1) / k)
+                ++fl;
+            if (a > (n + k - 1) / k)
+                fl = 1 << 30;
+        }
+        puts(fl <= (n - 1) % k + 1 ? "YES" : "NO");
     }
 }
