@@ -4,7 +4,18 @@ using namespace std;
 const ll nmax = 2e5 + 5;
 const ll mod = 998244353;
 ll fact[nmax];
-
+ll power(ll a, ll b)
+{
+    ll ans = 1;
+    while (b)
+    {
+        if (b & 1)
+            ans = (ans * a) % mod;
+        a = (a * a) % mod;
+        b >>= 1;
+    }
+    return ans;
+}
 void solver()
 {
 
@@ -12,39 +23,36 @@ void solver()
     cin >> s;
     ll ans = 1, one = 0, zero = 0;
     ll res = 0;
+    int n = s.size();
+    vector<int> arr;
     for (int i = 0; i < s.size(); i++)
     {
 
         if (s[i] == '0')
         {
-            if (one > 1)
-            {
-                ans = (ans * fact[one]) % mod;
-                res += (one - 1);
-            }
+            if (one)
+                arr.push_back(one);
             one = 0;
             zero++;
         }
         else
         {
 
-            if (zero > 1)
-            {
-                ans = (ans * fact[zero]) % mod;
-                res += (zero - 1);
-            }
+            if (zero)
+                arr.push_back(zero);
             zero = 0;
-
             one++;
         }
     }
     int mx = max(zero, one);
-    if (mx > 1)
+    arr.push_back(mx);
+    int m = arr.size();
+    for (int i = 0; i < m; i++)
     {
-        ans = (ans * fact[mx]) % mod;
-        res += (mx - 1);
+        ans = (ans * arr[i]) % mod;
+        res += arr[i] - 1;
     }
-    cout << res << " " << ans << endl;
+    cout << res << " " << (ans * fact[n - m]) % mod << endl;
 }
 int main()
 {
