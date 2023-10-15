@@ -3,7 +3,6 @@ using namespace std;
 #define ll long long
 void solver()
 {
-
     char v[10][10];
     for (int i = 1; i <= 9; i++)
     {
